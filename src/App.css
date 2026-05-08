@@ -1,0 +1,310 @@
+/* ═══════════════════════════════════════════════════════════
+   Emilios Restaurante – Premium Luxury Stylesheet
+   ═══════════════════════════════════════════════════════════ */
+
+/* ===== Preloader ===== */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #050505;
+}
+
+.preloader-logo {
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
+  letter-spacing: 0.15em;
+  color: #c5a059;
+  opacity: 0;
+  animation: preloaderFadeIn 1s ease-out 0.3s forwards;
+}
+
+.preloader-line {
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c5a059, transparent);
+  margin-top: 1.5rem;
+  animation: preloaderLine 1.5s ease-out 0.6s forwards;
+}
+
+.preloader-tagline {
+  font-family: "Inter", sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(197, 160, 89, 0.5);
+  margin-top: 1rem;
+  opacity: 0;
+  animation: preloaderFadeIn 0.8s ease-out 1.2s forwards;
+}
+
+@keyframes preloaderFadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes preloaderLine {
+  to { width: 120px; }
+}
+
+.preloader-exit {
+  animation: preloaderExit 0.8s ease-in-out forwards;
+}
+
+@keyframes preloaderExit {
+  0% { opacity: 1; }
+  100% { opacity: 0; pointer-events: none; }
+}
+
+/* ===== Mobile Sticky CTA ===== */
+.mobile-sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  padding: 10px 12px;
+  background: rgba(5, 5, 5, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(197, 160, 89, 0.15);
+  display: flex;
+  gap: 8px;
+  animation: slideUpCta 0.5s ease-out;
+}
+
+@keyframes slideUpCta {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@media (min-width: 768px) {
+  .mobile-sticky-cta {
+    display: none;
+  }
+}
+
+/* ===== Section Divider ===== */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.12), transparent);
+}
+
+/* ===== Gold Shimmer Effect ===== */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.gold-shimmer {
+  background: linear-gradient(
+    90deg, 
+    #c5a059 0%, 
+    #d4b572 20%, 
+    #f5e6c8 40%, 
+    #f5f0e6 50%, 
+    #f5e6c8 60%, 
+    #d4b572 80%, 
+    #c5a059 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 5s linear infinite;
+}
+
+/* ===== Floating Pulse ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ===== Parallax Helper ===== */
+.parallax-container {
+  overflow: hidden;
+  position: relative;
+}
+
+/* ===== Ken Burns (slow zoom) on hero image ===== */
+@keyframes kenBurns {
+  0% { transform: scale(1.0); }
+  100% { transform: scale(1.12); }
+}
+
+.hero-bg-image {
+  animation: kenBurns 25s ease-out forwards;
+  will-change: transform;
+}
+
+/* ===== Cinematic vignette overlay ===== */
+.cinematic-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(5, 5, 5, 0.5) 80%,
+    rgba(5, 5, 5, 0.85) 100%
+  );
+}
+
+/* ===== Dark Map Override ===== */
+.map-dark-overlay iframe {
+  filter: grayscale(100%) invert(92%) contrast(83%) brightness(85%) sepia(5%);
+}
+
+/* ===== Form Input Autofill Override ===== */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #f5f0e6 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #0a0a0a inset !important;
+  box-shadow: 0 0 0px 1000px #0a0a0a inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* ===== Premium grain texture overlay ===== */
+.grain-overlay {
+  position: relative;
+}
+
+.grain-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ===== Premium button glow ===== */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-glow::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: transform 0.6s ease;
+}
+
+.btn-glow:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* ===== Elegant underline hover ===== */
+.elegant-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.elegant-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #c5a059;
+  transition: width 0.4s ease;
+}
+
+.elegant-underline:hover::after {
+  width: 100%;
+}
+
+/* ===== Premium card hover ===== */
+.premium-card {
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.premium-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 1px rgba(197, 160, 89, 0.1);
+}
+
+/* ===== Testimonial quote animation ===== */
+@keyframes quotePulse {
+  0%, 100% { opacity: 0.08; }
+  50% { opacity: 0.16; }
+}
+
+.quote-pulse {
+  animation: quotePulse 4s ease-in-out infinite;
+}
+
+/* ===== Smooth section reveal ===== */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.section-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Image reveal mask ===== */
+@keyframes imageReveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+.image-reveal {
+  animation: imageReveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+/* ===== Ambient glow effect ===== */
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(100px);
+  opacity: 0.03;
+}
+
+/* ===== Premium horizontal rule ===== */
+.premium-hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(197, 160, 89, 0.2) 20%,
+    rgba(197, 160, 89, 0.4) 50%,
+    rgba(197, 160, 89, 0.2) 80%,
+    transparent
+  );
+}
+
+/* ===== Instagram marquee pause on hover ===== */
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused !important;
+}
