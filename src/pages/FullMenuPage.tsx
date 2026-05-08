@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const categories = ["signature", "breakfast", "meats", "seafood", "pasta", "desserts", "cocktails", "beverages"];
@@ -48,7 +47,6 @@ const menuData: Record<string, { name: string, desc: string, price: string, imag
 };
 
 export default function FullMenuPage() {
-  const { t } = useTranslation();
   const [activeCategory, setActiveCategory] = useState("signature");
 
   useEffect(() => {

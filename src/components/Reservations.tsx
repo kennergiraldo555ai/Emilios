@@ -1,11 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Send, ChevronRight, ChevronLeft } from 'lucide-react';
 
 export default function Reservations() {
-  const { t } = useTranslation();
-  
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
