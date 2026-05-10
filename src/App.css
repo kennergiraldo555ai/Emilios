@@ -308,3 +308,17 @@ select:-webkit-autofill:focus {
 .marquee-container:hover .marquee-track {
   animation-play-state: paused !important;
 }
+
+/* ===== 3D Perspective ===== */
+.perspective-2000 {
+  perspective: 2000px;
+}
+
+/* ===== Utilities ===== */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

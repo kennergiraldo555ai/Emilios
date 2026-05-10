@@ -17,6 +17,8 @@ import InstagramFeed from './components/InstagramFeed';
 import Location from './components/Location';
 import Footer from './components/Footer';
 import FullMenuPage from './pages/FullMenuPage';
+import WhatsAppButton, { WHATSAPP_NUMBER, WHATSAPP_MESSAGE } from './components/WhatsAppButton';
+import { MessageCircle } from 'lucide-react';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -79,11 +81,13 @@ function HomePage({ loading }: { loading: boolean }) {
               {t('mobileCta.reserve')}
             </ScrollLink>
             <a
-              href="tel:+573208990331"
+              href={`https://wa.me/${WHATSAPP_NUMBER.replace('+', '')}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-transparent border border-gold/30 text-gold py-3.5 px-5 uppercase tracking-[0.15em] text-[11px] font-semibold hover:bg-gold/10 transition-colors"
             >
-              <Phone size={15} />
-              {t('mobileCta.call')}
+              <MessageCircle size={15} />
+              WhatsApp
             </a>
           </motion.div>
         )}
@@ -110,6 +114,7 @@ function App() {
           <Route path="/menu" element={<FullMenuPage />} />
         </Routes>
 
+        <WhatsAppButton />
         <Footer />
       </div>
     </>

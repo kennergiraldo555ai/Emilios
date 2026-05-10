@@ -4,6 +4,8 @@ import { Link as ScrollLink } from 'react-scroll';
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { WHATSAPP_NUMBER, WHATSAPP_MESSAGE } from './WhatsAppButton';
+import { MessageCircle } from 'lucide-react';
 
 export default function Navbar() {
   const { t } = useTranslation();
@@ -199,10 +201,18 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="absolute bottom-12 left-10 flex flex-col space-y-4"
+              className="absolute bottom-12 left-10 right-10 flex flex-col space-y-4"
             >
-              <p className="text-gold/50 uppercase tracking-[0.2em] text-[10px] font-semibold">Reservas</p>
-              <a href="tel:+573208990331" className="text-white text-lg tracking-widest">+57 320 899 0331</a>
+              <p className="text-gold/50 uppercase tracking-[0.2em] text-[10px] font-semibold">Reservas & Contacto</p>
+              <a 
+                href={`https://wa.me/${WHATSAPP_NUMBER.replace('+', '')}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-gold/10 border border-gold/20 text-gold px-6 py-4 rounded-sm text-lg tracking-widest hover:bg-gold hover:text-darker transition-all duration-300 group"
+              >
+                <MessageCircle size={20} className="group-hover:scale-110 transition-transform" />
+                <span>WhatsApp</span>
+              </a>
             </motion.div>
           </motion.div>
         )}

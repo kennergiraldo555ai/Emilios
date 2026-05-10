@@ -69,53 +69,70 @@ export default function Testimonials() {
           </motion.h3>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-          {testimonials.map((test, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.9, delay: index * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="group bg-dark/40 backdrop-blur-md p-10 md:p-12 border border-white/[0.03] hover:border-gold/20 transition-all duration-700 relative flex flex-col justify-between"
-            >
-              {/* Quote icon */}
-              <Quote size={40} className="absolute top-8 right-8 text-gold/5 group-hover:text-gold/10 transition-colors duration-700 quote-pulse pointer-events-none" />
-              
-              <div>
-                {/* Stars */}
-                <div className="flex space-x-1.5 mb-8">
-                  {[...Array(test.rating)].map((_, i) => (
-                    <Star key={i} size={15} className="text-gold drop-shadow-[0_0_8px_rgba(197,160,89,0.5)]" fill="currentColor" />
-                  ))}
-                </div>
+        {/* Testimonials Container */}
+        <div className="relative">
+          {/* Mobile: Horizontal Slider | Desktop: Grid */}
+          <motion.div 
+            className="flex md:grid md:grid-cols-3 gap-6 md:gap-10 overflow-x-auto md:overflow-x-visible pb-12 md:pb-0 scrollbar-hide snap-x snap-mandatory"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {testimonials.map((test, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.9, delay: index * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="flex-shrink-0 w-[85vw] md:w-auto snap-center group bg-dark/40 backdrop-blur-md p-8 md:p-12 border border-white/[0.03] hover:border-gold/20 transition-all duration-700 relative flex flex-col justify-between"
+              >
+                {/* Quote icon */}
+                <Quote size={40} className="absolute top-8 right-8 text-gold/5 group-hover:text-gold/10 transition-colors duration-700 quote-pulse pointer-events-none" />
                 
-                <p className="text-beige/70 font-light italic mb-10 leading-relaxed text-base md:text-lg">
-                  "{test.text[lang] || test.text.es}"
-                </p>
-              </div>
-              
-              <div className="border-t border-white/[0.05] pt-8 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full overflow-hidden border border-gold/30 group-hover:border-gold transition-colors duration-500">
-                  <img 
-                    src={index === 0 ? "/images/1494790108377-be9c29b29330.webp" : index === 1 ? "/images/1500648767791-00dcc994a43e.webp" : "/images/1534528741775-53994a69daeb.webp"}
-                    alt={test.name}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
                 <div>
-                  <h4 className="text-white font-serif tracking-wider text-base mb-1">
-                    {test.name}
-                  </h4>
-                  <p className="text-gold/70 text-[9px] uppercase tracking-[0.2em] font-medium">
-                    {test.role[lang] || test.role.es}
+                  {/* Stars */}
+                  <div className="flex space-x-1.5 mb-8">
+                    {[...Array(test.rating)].map((_, i) => (
+                      <Star key={i} size={15} className="text-gold drop-shadow-[0_0_8px_rgba(197,160,89,0.5)]" fill="currentColor" />
+                    ))}
+                  </div>
+                  
+                  <p className="text-beige/70 font-light italic mb-10 leading-relaxed text-base md:text-lg min-h-[120px]">
+                    "{test.text[lang] || test.text.es}"
                   </p>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+                
+                <div className="border-t border-white/[0.05] pt-8 flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full overflow-hidden border border-gold/30 group-hover:border-gold transition-colors duration-500 flex-shrink-0">
+                    <img 
+                      src={index === 0 ? "/images/1494790108377-be9c29b29330.webp" : index === 1 ? "/images/1500648767791-00dcc994a43e.webp" : "/images/1534528741775-53994a69daeb.webp"}
+                      alt={test.name}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-serif tracking-wider text-base mb-1">
+                      {test.name}
+                    </h4>
+                    <p className="text-gold/70 text-[9px] uppercase tracking-[0.2em] font-medium">
+                      {test.role[lang] || test.role.es}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+          
+          {/* Mobile Drag Indicator */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="md:hidden flex justify-center mt-4 space-x-2"
+          >
+            {testimonials.map((_, i) => (
+              <div key={i} className="w-1.5 h-1.5 rounded-full bg-gold/20" />
+            ))}
+          </motion.div>
         </div>
 
       </div>

@@ -7,27 +7,37 @@ const dishes = [
   {
     id: 1,
     image: "/images/tomahawk_steak.webp",
-    key: "meat"
+    key: "meat",
+    price: "$280.000",
+    reason: { es: "Nuestra pieza más majestuosa, madurada a la perfección.", en: "Our most majestic cut, aged to perfection." }
   },
   {
     id: 2,
-    image: "/images/tomahawk_steak.webp",
-    key: "seafood"
+    image: "/images/mero_horno.webp",
+    key: "seafood",
+    price: "$145.000",
+    reason: { es: "Fresco, delicado y con una costra de hierbas secreta.", en: "Fresh, delicate, and featuring a secret herb crust." }
   },
   {
     id: 3,
     image: "/images/1504674900247-0877df9cc836.webp",
-    key: "signature"
+    key: "signature",
+    price: "$110.000",
+    reason: { es: "La esencia de nuestra cocina en un solo plato.", en: "The essence of our kitchen in a single dish." }
   },
   {
     id: 4,
     image: "/images/esfera_chocolate.webp",
-    key: "dessert"
+    key: "dessert",
+    price: "$45.000",
+    reason: { es: "Una explosión de texturas y chocolate de origen.", en: "An explosion of textures and origin chocolate." }
   },
   {
     id: 5,
     image: "/images/1514362545857-3bc16c4c7d1b.webp",
-    key: "cocktails"
+    key: "cocktails",
+    price: "$45.000",
+    reason: { es: "Alquimia pura servida con un toque de humo.", en: "Pure alchemy served with a touch of smoke." }
   }
 ];
 
@@ -87,9 +97,20 @@ export default function FeaturedDishes() {
               />
               <div className="absolute inset-0 border border-white/[0.03] group-hover:border-gold/20 transition-colors duration-700 z-20 pointer-events-none" />
               <div className="absolute bottom-0 left-0 w-full p-8 z-30">
-                <h4 className="text-white font-serif text-2xl md:text-3xl mb-3 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                  {t(`featured.items.${dish.key}`)}
-                </h4>
+                <div className="flex justify-between items-end mb-3 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                  <div>
+                    <p className="text-gold text-[10px] uppercase tracking-widest mb-1 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                      Featured
+                    </p>
+                    <h4 className="text-white font-serif text-2xl md:text-3xl">
+                      {t(`featured.items.${dish.key}`)}
+                    </h4>
+                  </div>
+                  <p className="text-gold font-serif text-xl">{dish.price}</p>
+                </div>
+                <p className="text-beige/60 text-[10px] md:text-xs mb-4 line-clamp-2 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100">
+                  {dish.reason[t('lang') as 'es' | 'en'] || dish.reason.es}
+                </p>
                 <div className="h-[1px] w-0 bg-gold group-hover:w-16 transition-all duration-700 ease-out" />
               </div>
             </motion.div>

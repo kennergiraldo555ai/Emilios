@@ -86,6 +86,23 @@ export default function MenuPreview() {
             {t('menu.subtitle')}
           </motion.h3>
         </div>
+        
+        {/* Top CTA for visibility */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="flex justify-center mb-16"
+        >
+          <Link
+            to="/menu"
+            className="group inline-flex items-center gap-4 bg-transparent border border-gold/40 text-gold hover:bg-gold hover:text-darker hover:border-gold px-12 py-4 uppercase tracking-[0.25em] text-[11px] font-semibold transition-all duration-500 shadow-[0_0_40px_rgba(197,160,89,0.05)] hover:shadow-[0_0_60px_rgba(197,160,89,0.15)]"
+          >
+            <span>{t('menu.fullMenuBtn')}</span>
+            <ArrowUpRight size={15} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+          </Link>
+        </motion.div>
 
         {/* Categories */}
         <motion.div 
@@ -165,22 +182,6 @@ export default function MenuPreview() {
           </AnimatePresence>
         </div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-20 text-center"
-        >
-          <Link
-            to="/menu"
-            className="group inline-flex items-center gap-4 bg-gold hover:bg-gold-light text-darker px-12 py-4 uppercase tracking-[0.25em] text-[11px] font-semibold transition-all duration-500 shadow-[0_0_40px_rgba(197,160,89,0.15)] hover:shadow-[0_0_60px_rgba(197,160,89,0.3)] btn-glow"
-          >
-            <span>{t('menu.fullMenuBtn')}</span>
-            <ArrowUpRight size={15} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-          </Link>
-        </motion.div>
 
       </div>
     </section>

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
@@ -5,15 +6,33 @@ import { ChevronDown } from 'lucide-react';
 
 export default function Hero() {
   const { t } = useTranslation();
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+    const x = (clientX / innerWidth - 0.5) * 20;
+    const y = (clientY / innerHeight - 0.5) * 20;
+    setMousePos({ x, y });
+  };
 
   return (
-    <section id="hero" className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <section 
+      id="hero" 
+      className="relative h-screen w-full flex items-center justify-center overflow-hidden perspective-2000"
+      onMouseMove={handleMouseMove}
+    >
       {/* Background Image with Ken Burns */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-bg-image"
+      <motion.div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-bg-image scale-110"
         style={{ 
           backgroundImage: 'url("/images/1544148103-0773bf10d330.webp")',
         }}
+        animate={{
+          x: mousePos.x * -1.5,
+          y: mousePos.y * -1.5,
+        }}
+        transition={{ type: "spring", stiffness: 50, damping: 20 }}
       />
       
       {/* Dark cinematic gradient overlay */}
@@ -28,7 +47,16 @@ export default function Hero() {
       {/* Subtle ambient glow - optimized with radial gradient */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(197,160,89,0.06)_0%,rgba(197,160,89,0)_60%)] pointer-events-none z-[3]" />
 
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto flex flex-col items-center">
+      <motion.div 
+        className="relative z-10 text-center px-6 max-w-5xl mx-auto flex flex-col items-center"
+        animate={{
+          rotateY: mousePos.x * 0.5,
+          rotateX: mousePos.y * -0.5,
+          z: 50
+        }}
+        transition={{ type: "spring", stiffness: 100, damping: 30 }}
+        style={{ transformStyle: 'preserve-3d' }}
+      >
         {/* Decorative line */}
         <motion.div
           initial={{ scaleX: 0 }}
@@ -50,7 +78,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="text-7xl md:text-8xl lg:text-[10rem] font-serif text-white mb-3 leading-[0.85] tracking-tight"
+          className="text-7xl md:text-8xl lg:text-[10rem] font-serif text-white mb-3 leading-[0.85] tracking-tight drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+          style={{ translateZ: '80px' }}
         >
           Emilios
         </motion.h1>
@@ -60,6 +89,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.8 }}
           className="text-2xl md:text-4xl lg:text-5xl italic font-serif font-light text-beige/50 mb-16 tracking-wider"
+          style={{ translateZ: '40px' }}
         >
           Restaurante
         </motion.p>
@@ -69,6 +99,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 1 }}
           className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+          style={{ translateZ: '60px' }}
         >
           <Link
             to="reservations"
@@ -89,7 +120,7 @@ export default function Hero() {
             {t('hero.viewMenu')}
           </Link>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Scroll indicator */}
       <motion.div
