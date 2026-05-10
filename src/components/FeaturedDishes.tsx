@@ -42,7 +42,8 @@ const dishes = [
 ];
 
 export default function FeaturedDishes() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language as 'es' | 'en';
 
   return (
     <section id="featured" className="py-32 bg-dark relative overflow-hidden">
@@ -109,7 +110,7 @@ export default function FeaturedDishes() {
                   <p className="text-gold font-serif text-xl">{dish.price}</p>
                 </div>
                 <p className="text-beige/60 text-[10px] md:text-xs mb-4 line-clamp-2 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100">
-                  {dish.reason[t('lang') as 'es' | 'en'] || dish.reason.es}
+                  {dish.reason[lang] || dish.reason.es}
                 </p>
                 <div className="h-[1px] w-0 bg-gold group-hover:w-16 transition-all duration-700 ease-out" />
               </div>
@@ -136,9 +137,20 @@ export default function FeaturedDishes() {
               />
               <div className="absolute inset-0 border border-white/[0.03] group-hover:border-gold/20 transition-colors duration-700 z-20 pointer-events-none" />
               <div className="absolute bottom-0 left-0 w-full p-8 z-30">
-                <h4 className="text-white font-serif text-2xl md:text-3xl mb-3 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                  {t(`featured.items.${dish.key}`)}
-                </h4>
+                <div className="flex justify-between items-end mb-3 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                  <div>
+                    <p className="text-gold text-[10px] uppercase tracking-widest mb-1 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                      Featured
+                    </p>
+                    <h4 className="text-white font-serif text-2xl md:text-3xl">
+                      {t(`featured.items.${dish.key}`)}
+                    </h4>
+                  </div>
+                  <p className="text-gold font-serif text-xl">{dish.price}</p>
+                </div>
+                <p className="text-beige/60 text-[10px] md:text-xs mb-4 line-clamp-2 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100">
+                  {dish.reason[lang] || dish.reason.es}
+                </p>
                 <div className="h-[1px] w-0 bg-gold group-hover:w-16 transition-all duration-700 ease-out" />
               </div>
             </motion.div>

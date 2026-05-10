@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
-import { Phone, CalendarDays } from 'lucide-react';
+import { CalendarDays } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import './App.css';
 import Preloader from './components/Preloader';
