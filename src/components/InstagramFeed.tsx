@@ -3,14 +3,14 @@ import { motion } from 'framer-motion';
 import { FaInstagram } from 'react-icons/fa';
 
 const feed = [
-  "https://images.unsplash.com/photo-1544025162-811114bd4b3e?auto=format&fit=crop&q=80&w=600",
-  "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=600",
-  "https://images.unsplash.com/photo-1551223405-f3708e18df04?auto=format&fit=crop&q=80&w=600",
-  "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=600",
-  "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=600",
-  "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=600",
-  "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&q=80&w=600",
-  "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&q=80&w=600"
+  "/images/tomahawk_steak.webp",
+  "/images/1514362545857-3bc16c4c7d1b.webp",
+  "/images/tomahawk_steak.webp",
+  "/images/1414235077428-338989a2e8c0.webp",
+  "/images/1559339352-11d035aa65de.webp",
+  "/images/1504674900247-0877df9cc836.webp",
+  "/images/1476224203421-9ac39bcb3327.webp",
+  "/images/1567620905732-2d1ec7ab7445.webp"
 ];
 
 export default function InstagramFeed() {

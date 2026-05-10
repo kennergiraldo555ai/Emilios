@@ -23,7 +23,7 @@ export default function About() {
               className="relative h-[400px] md:h-[600px] w-full lg:w-[85%] overflow-hidden parallax-container"
             >
               <img 
-                src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&q=80&w=1200" 
+                src="/images/1550966871-3ed3cdb5ed0c.webp" 
                 alt="Chef preparing luxury dish" 
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-[1.5s]"
                 loading="lazy"
@@ -40,7 +40,7 @@ export default function About() {
               className="absolute -bottom-12 -right-2 md:right-0 w-[70%] md:w-[65%] h-48 md:h-72 border-4 border-darker overflow-hidden shadow-2xl z-20"
             >
               <img 
-                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=800" 
+                src="/images/1414235077428-338989a2e8c0.webp" 
                 alt="Elegant dining atmosphere" 
                 className="w-full h-full object-cover"
                 loading="lazy"

@@ -24,27 +24,27 @@ const prices: Record<string, Record<string, string>> = {
 
 const itemImages: Record<string, Record<string, string>> = {
   meat: { 
-    item1: "https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&q=60&w=600",
-    item2: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&q=60&w=600",
-    item3: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&q=60&w=600"
+    item1: "/images/1600891964092-4316c288032e.webp",
+    item2: "/images/1529692236671-f1f6cf9683ba.webp",
+    item3: "/images/1558030006-450675393462.webp"
   },
   seafood: { 
-    item1: "https://images.unsplash.com/photo-1511871893393-82cb5f583689?auto=format&fit=crop&q=60&w=600",
-    item2: "https://images.unsplash.com/photo-1485921325833-c519f76c4927?auto=format&fit=crop&q=60&w=600",
-    item3: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=60&w=600"
+    item1: "/images/mero_horno.webp",
+    item2: "/images/1485921325833-c519f76c4927.webp",
+    item3: "/images/1565557623262-b51c2513a641.webp"
   },
   signature: { 
-    item1: "https://images.unsplash.com/photo-1544025162-811114bd4b3e?auto=format&fit=crop&q=60&w=600",
-    item2: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&q=60&w=600"
+    item1: "/images/tomahawk_steak.webp",
+    item2: "/images/1551183053-bf91a1d81141.webp"
   },
   dessert: { 
-    item1: "https://images.unsplash.com/photo-1563805042-7684c8a9e9cb?auto=format&fit=crop&q=60&w=600",
-    item2: "https://images.unsplash.com/photo-1571115177098-24deecaff314?auto=format&fit=crop&q=60&w=600"
+    item1: "/images/esfera_chocolate.webp",
+    item2: "/images/esfera_chocolate.webp"
   },
   cocktails: { 
-    item1: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=60&w=600",
-    item2: "https://images.unsplash.com/photo-1560508180-04f141bf1632?auto=format&fit=crop&q=60&w=600",
-    item3: "https://images.unsplash.com/photo-1587223075055-82e9a937ddff?auto=format&fit=crop&q=60&w=600"
+    item1: "/images/1514362545857-3bc16c4c7d1b.webp",
+    item2: "/images/1514362545857-3bc16c4c7d1b.webp",
+    item3: "/images/1587223075055-82e9a937ddff.webp"
   }
 };
 

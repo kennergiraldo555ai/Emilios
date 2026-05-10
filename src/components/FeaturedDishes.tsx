@@ -6,27 +6,27 @@ import { Link } from 'react-router-dom';
 const dishes = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1544025162-811114bd4b3e?auto=format&fit=crop&q=80&w=800",
+    image: "/images/tomahawk_steak.webp",
     key: "meat"
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1551223405-f3708e18df04?auto=format&fit=crop&q=80&w=800",
+    image: "/images/tomahawk_steak.webp",
     key: "seafood"
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800",
+    image: "/images/1504674900247-0877df9cc836.webp",
     key: "signature"
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1563805042-7684c8a9e9cb?auto=format&fit=crop&q=80&w=800",
+    image: "/images/esfera_chocolate.webp",
     key: "dessert"
   },
   {
     id: 5,
-    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=800",
+    image: "/images/1514362545857-3bc16c4c7d1b.webp",
     key: "cocktails"
   }
 ];

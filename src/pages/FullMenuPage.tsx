@@ -5,44 +5,44 @@ const categories = ["signature", "breakfast", "meats", "seafood", "pasta", "dess
 
 const menuData: Record<string, { name: string, desc: string, price: string, image: string }[]> = {
   signature: [
-    { name: "Tomahawk Emilios", desc: "Corte premium de 1000g, madurado 45 días, servido con puré trufado y vegetales asados.", price: "$280.000", image: "https://images.unsplash.com/photo-1544025162-811114bd4b3e?auto=format&fit=crop&q=60&w=600" },
-    { name: "Mero al Horno", desc: "Filete de mero fresco con costra de finas hierbas sobre risotto de azafrán.", price: "$145.000", image: "https://images.unsplash.com/photo-1511871893393-82cb5f583689?auto=format&fit=crop&q=60&w=600" },
-    { name: "Pasta Trufada", desc: "Pappardelle artesanal con crema de trufa negra, champiñones silvestres y parmesano.", price: "$110.000", image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&q=60&w=600" }
+    { name: "Tomahawk Emilios", desc: "Corte premium de 1000g, madurado 45 días, servido con puré trufado y vegetales asados.", price: "$280.000", image: "/images/tomahawk_steak.webp" },
+    { name: "Mero al Horno", desc: "Filete de mero fresco con costra de finas hierbas sobre risotto de azafrán.", price: "$145.000", image: "/images/mero_horno.webp" },
+    { name: "Pasta Trufada", desc: "Pappardelle artesanal con crema de trufa negra, champiñones silvestres y parmesano.", price: "$110.000", image: "/images/1551183053-bf91a1d81141.webp" }
   ],
   breakfast: [
-    { name: "Desayuno Emilios", desc: "Huevos pochados sobre pan artesanal, aguacate, salmón ahumado y salsa holandesa.", price: "$45.000", image: "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&q=60&w=600" },
-    { name: "Tostadas Francesas", desc: "Pan brioche, frutos rojos frescos, sirope de maple puro y crema batida.", price: "$35.000", image: "https://images.unsplash.com/photo-1484723091791-0fee59ca0b09?auto=format&fit=crop&q=60&w=600" },
-    { name: "Parfait de Temporada", desc: "Yogur griego, granola artesanal, miel orgánica y selección de frutas.", price: "$28.000", image: "https://images.unsplash.com/photo-1494597564530-871f2b93ac55?auto=format&fit=crop&q=60&w=600" }
+    { name: "Desayuno Emilios", desc: "Huevos pochados sobre pan artesanal, aguacate, salmón ahumado y salsa holandesa.", price: "$45.000", image: "/images/1533089860892-a7c6f0a88666.webp" },
+    { name: "Tostadas Francesas", desc: "Pan brioche, frutos rojos frescos, sirope de maple puro y crema batida.", price: "$35.000", image: "/images/tostadas_francesas.webp" },
+    { name: "Parfait de Temporada", desc: "Yogur griego, granola artesanal, miel orgánica y selección de frutas.", price: "$28.000", image: "/images/1494597564530-871f2b93ac55.webp" }
   ],
   meats: [
-    { name: "Ribeye", desc: "Corte jugoso de 400g, acompañado de papas rústicas y chimichurri de la casa.", price: "$180.000", image: "https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&q=60&w=600" },
-    { name: "Entraña", desc: "Corte tierno a la parrilla, ensalada fresca y puré de papa criolla.", price: "$120.000", image: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&q=60&w=600" },
-    { name: "Lomo de Res", desc: "Medallones de lomo en salsa de vino tinto y setas, con espárragos al grill.", price: "$95.000", image: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&q=60&w=600" }
+    { name: "Ribeye", desc: "Corte jugoso de 400g, acompañado de papas rústicas y chimichurri de la casa.", price: "$180.000", image: "/images/1600891964092-4316c288032e.webp" },
+    { name: "Entraña", desc: "Corte tierno a la parrilla, ensalada fresca y puré de papa criolla.", price: "$120.000", image: "/images/1529692236671-f1f6cf9683ba.webp" },
+    { name: "Lomo de Res", desc: "Medallones de lomo en salsa de vino tinto y setas, con espárragos al grill.", price: "$95.000", image: "/images/1558030006-450675393462.webp" }
   ],
   seafood: [
-    { name: "Salmón al Grill", desc: "Filete de salmón, quinua cítrica y salsa de maracuyá.", price: "$85.000", image: "https://images.unsplash.com/photo-1485921325833-c519f76c4927?auto=format&fit=crop&q=60&w=600" },
-    { name: "Langostinos Jumbo", desc: "Langostinos al ajillo con puré de coliflor y crocante de plátano.", price: "$115.000", image: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=60&w=600" },
-    { name: "Ceviche Peruano", desc: "Pescado blanco, leche de tigre, maíz tostado y camote glaseado.", price: "$65.000", image: "https://images.unsplash.com/photo-1535399831218-d5bd36d1a6b3?auto=format&fit=crop&q=60&w=600" }
+    { name: "Salmón al Grill", desc: "Filete de salmón, quinua cítrica y salsa de maracuyá.", price: "$85.000", image: "/images/1485921325833-c519f76c4927.webp" },
+    { name: "Langostinos Jumbo", desc: "Langostinos al ajillo con puré de coliflor y crocante de plátano.", price: "$115.000", image: "/images/1565557623262-b51c2513a641.webp" },
+    { name: "Ceviche Peruano", desc: "Pescado blanco, leche de tigre, maíz tostado y camote glaseado.", price: "$65.000", image: "/images/1535399831218-d5bd36d1a6b3.webp" }
   ],
   pasta: [
-    { name: "Linguini Frutti di Mare", desc: "Pasta con selección de mariscos frescos en salsa pomodoro rústica.", price: "$85.000", image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&q=60&w=600" },
-    { name: "Raviolis de Res", desc: "Raviolis artesanales rellenos de asado de tira en salsa de queso azul.", price: "$75.000", image: "https://images.unsplash.com/photo-1588013273468-315fd88ea34c?auto=format&fit=crop&q=60&w=600" },
-    { name: "Risotto de Setas", desc: "Arroz arborio, mezcla de setas silvestres, trufa y parmesano.", price: "$80.000", image: "https://images.unsplash.com/photo-1633337474564-1d8bfccbd2bf?auto=format&fit=crop&q=60&w=600" }
+    { name: "Linguini Frutti di Mare", desc: "Pasta con selección de mariscos frescos en salsa pomodoro rústica.", price: "$85.000", image: "/images/1563379926898-05f4575a45d8.webp" },
+    { name: "Raviolis de Res", desc: "Raviolis artesanales rellenos de asado de tira en salsa de queso azul.", price: "$75.000", image: "/images/1588013273468-315fd88ea34c.webp" },
+    { name: "Risotto de Setas", desc: "Arroz arborio, mezcla de setas silvestres, trufa y parmesano.", price: "$80.000", image: "/images/risotto_setas.webp" }
   ],
   desserts: [
-    { name: "Esfera de Chocolate", desc: "Chocolate oscuro 70%, relleno de mousse de maracuyá y láminas de oro.", price: "$45.000", image: "https://images.unsplash.com/photo-1563805042-7684c8a9e9cb?auto=format&fit=crop&q=60&w=600" },
-    { name: "Tiramisú Emilios", desc: "Clásico italiano con mascarpone fresco, espresso y cacao en polvo.", price: "$35.000", image: "https://images.unsplash.com/photo-1571115177098-24deecaff314?auto=format&fit=crop&q=60&w=600" },
-    { name: "Crème Brûlée", desc: "Infusionada con vainilla de Madagascar y frutos rojos.", price: "$30.000", image: "https://images.unsplash.com/photo-1473655551229-a39d1a9828dc?auto=format&fit=crop&q=60&w=600" }
+    { name: "Esfera de Chocolate", desc: "Chocolate oscuro 70%, relleno de mousse de maracuyá y láminas de oro.", price: "$45.000", image: "/images/esfera_chocolate.webp" },
+    { name: "Tiramisú Emilios", desc: "Clásico italiano con mascarpone fresco, espresso y cacao en polvo.", price: "$35.000", image: "/images/esfera_chocolate.webp" },
+    { name: "Crème Brûlée", desc: "Infusionada con vainilla de Madagascar y frutos rojos.", price: "$30.000", image: "/images/esfera_chocolate.webp" }
   ],
   cocktails: [
-    { name: "Emilios Signature", desc: "Ginebra, licor de flor de saúco, pepino, limón y tónica premium.", price: "$42.000", image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=60&w=600" },
-    { name: "Old Fashioned Ahumado", desc: "Bourbon, angostura, sirope simple, ahumado con madera de cerezo.", price: "$45.000", image: "https://images.unsplash.com/photo-1560508180-04f141bf1632?auto=format&fit=crop&q=60&w=600" },
-    { name: "Margarita de Jamaica", desc: "Tequila reposado, Cointreau, reducción de flor de jamaica y sal negra.", price: "$38.000", image: "https://images.unsplash.com/photo-1587223075055-82e9a937ddff?auto=format&fit=crop&q=60&w=600" }
+    { name: "Emilios Signature", desc: "Ginebra, licor de flor de saúco, pepino, limón y tónica premium.", price: "$42.000", image: "/images/1514362545857-3bc16c4c7d1b.webp" },
+    { name: "Old Fashioned Ahumado", desc: "Bourbon, angostura, sirope simple, ahumado con madera de cerezo.", price: "$45.000", image: "/images/1514362545857-3bc16c4c7d1b.webp" },
+    { name: "Margarita de Jamaica", desc: "Tequila reposado, Cointreau, reducción de flor de jamaica y sal negra.", price: "$38.000", image: "/images/1587223075055-82e9a937ddff.webp" }
   ],
   beverages: [
-    { name: "Limonada de Coco", desc: "Limón fresco, crema de coco natural y hielo frappeado.", price: "$18.000", image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&q=60&w=600" },
-    { name: "Jugos Naturales", desc: "Selección de frutas de temporada en agua o leche.", price: "$15.000", image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&q=60&w=600" },
-    { name: "Café Espresso", desc: "Blend de la casa, tostión media, notas de chocolate y caramelo.", price: "$8.000", image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&q=60&w=600" }
+    { name: "Limonada de Coco", desc: "Limón fresco, crema de coco natural y hielo frappeado.", price: "$18.000", image: "/images/1513558161293-cdaf765ed2fd.webp" },
+    { name: "Jugos Naturales", desc: "Selección de frutas de temporada en agua o leche.", price: "$15.000", image: "/images/1622483767028-3f66f32aef97.webp" },
+    { name: "Café Espresso", desc: "Blend de la casa, tostión media, notas de chocolate y caramelo.", price: "$8.000", image: "/images/1510591509098-f4fdc6d0ff04.webp" }
   ]
 };
 
@@ -63,7 +63,7 @@ export default function FullMenuPage() {
       {/* Optimized texture layer with lower opacity and strict bounds */}
       <div 
         className="absolute inset-0 opacity-[0.015] mix-blend-overlay pointer-events-none bg-repeat z-0" 
-        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=10&w=100")', backgroundSize: '100px 100px' }}
+        style={{ backgroundImage: 'url("/images/1559339352-11d035aa65de.webp")', backgroundSize: '100px 100px' }}
       />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">

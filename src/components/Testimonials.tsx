@@ -99,7 +99,7 @@ export default function Testimonials() {
               <div className="border-t border-white/[0.05] pt-8 flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full overflow-hidden border border-gold/30 group-hover:border-gold transition-colors duration-500">
                   <img 
-                    src={`https://images.unsplash.com/photo-${index === 0 ? '1494790108377-be9c29b29330' : index === 1 ? '1500648767791-00dcc994a43e' : '1534528741775-53994a69daeb'}?auto=format&fit=crop&q=80&w=150`}
+                    src={index === 0 ? "/images/1494790108377-be9c29b29330.webp" : index === 1 ? "/images/1500648767791-00dcc994a43e.webp" : "/images/1534528741775-53994a69daeb.webp"}
                     alt={test.name}
                     className="w-full h-full object-cover"
                     loading="lazy"
