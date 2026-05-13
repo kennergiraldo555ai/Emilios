@@ -131,7 +131,7 @@ export default function Navbar() {
               isHomePage ? (
                 <ScrollLink
                   key={link.name}
-                  to={link.to}
+                  to={link.to || ''}
                   smooth={true}
                   duration={800}
                   offset={-100}
@@ -142,7 +142,7 @@ export default function Navbar() {
               ) : (
                 <button
                   key={link.name}
-                  onClick={() => handleNavClick(link.to)}
+                  onClick={() => handleNavClick(link.to || '')}
                   className="text-[10px] uppercase tracking-[0.25em] font-semibold text-beige/80 hover:text-gold transition-colors cursor-pointer"
                 >
                   {link.name}
@@ -187,7 +187,7 @@ export default function Navbar() {
                   <RouterLink
                     key={link.name}
                     to={link.route}
-                    onClick={() => handleNavClick(link.to, link.route)}
+                    onClick={() => handleNavClick(link.to || '', link.route)}
                     className="text-3xl font-serif text-white hover:text-gold transition-colors tracking-wide"
                   >
                     {link.name}
@@ -195,7 +195,7 @@ export default function Navbar() {
                 ) : (
                 <button
                   key={link.name}
-                  onClick={() => handleNavClick(link.to, link.route)}
+                  onClick={() => handleNavClick(link.to || '', link.route)}
                   className="text-3xl font-serif text-white hover:text-gold transition-colors tracking-wide text-left"
                 >
                   {link.name}
