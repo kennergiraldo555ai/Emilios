@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
-import { CalendarDays } from 'lucide-react';
+import { CalendarDays, MessageCircle } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import './App.css';
 import Preloader from './components/Preloader';
@@ -16,9 +16,25 @@ import Testimonials from './components/Testimonials';
 import InstagramFeed from './components/InstagramFeed';
 import Location from './components/Location';
 import Footer from './components/Footer';
-import FullMenuPage from './pages/FullMenuPage';
 import WhatsAppButton, { WHATSAPP_NUMBER, WHATSAPP_MESSAGE } from './components/WhatsAppButton';
-import { MessageCircle } from 'lucide-react';
+
+// Lazy load non-essential pages
+const FullMenuPage = lazy(() => import('./pages/FullMenuPage'));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
+const TermsPage = lazy(() => import('./pages/TermsPage'));
+const DeliveryPage = lazy(() => import('./pages/DeliveryPage'));
+
+// Elegant Loader for lazy routes
+const PageLoader = () => (
+  <div className="min-h-screen bg-darker flex items-center justify-center">
+    <div className="relative">
+      <div className="w-16 h-16 border-2 border-gold/20 border-t-gold rounded-full animate-spin" />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-8 h-8 bg-gold/10 rounded-full animate-pulse" />
+      </div>
+    </div>
+  </div>
+);
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -109,10 +125,15 @@ function App() {
       <div className={`bg-darker min-h-screen text-beige selection:bg-gold/30 selection:text-beige font-sans ${loading ? 'overflow-hidden h-screen' : ''}`}>
         <Navbar />
         
-        <Routes>
-          <Route path="/" element={<HomePage loading={loading} />} />
-          <Route path="/menu" element={<FullMenuPage />} />
-        </Routes>
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/" element={<HomePage loading={loading} />} />
+            <Route path="/menu" element={<FullMenuPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/delivery" element={<DeliveryPage />} />
+          </Routes>
+        </Suspense>
 
         <WhatsAppButton />
         <Footer />

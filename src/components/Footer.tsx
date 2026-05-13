@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link as ScrollLink } from 'react-scroll';
-import { FaInstagram } from 'react-icons/fa';
+import { FaInstagram, FaFacebook } from 'react-icons/fa';
+import { Link as RouterLink } from 'react-router-dom';
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -61,9 +62,17 @@ export default function Footer() {
                 href="https://www.instagram.com/emiliosrestaurante/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-beige/40 hover:text-gold transition-colors duration-300"
+                className="group flex items-center justify-center w-10 h-10 border border-white/10 hover:border-gold/50 transition-all duration-500 rounded-full hover:bg-gold/5"
               >
-                <FaInstagram size={20} />
+                <FaInstagram size={18} className="text-beige/40 group-hover:text-gold transition-colors duration-300" />
+              </a>
+              <a 
+                href="https://www.facebook.com/share/1KDP9ocRaX/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group flex items-center justify-center w-10 h-10 border border-white/10 hover:border-gold/50 transition-all duration-500 rounded-full hover:bg-gold/5"
+              >
+                <FaFacebook size={18} className="text-beige/40 group-hover:text-gold transition-colors duration-300" />
               </a>
             </div>
           </div>
@@ -124,6 +133,15 @@ export default function Footer() {
                   </ScrollLink>
                 </li>
               ))}
+              <li>
+                <RouterLink
+                  to="/delivery"
+                  className="text-gold hover:text-gold-light text-sm font-medium uppercase tracking-widest cursor-pointer transition-colors duration-300 flex items-center gap-2 group"
+                >
+                  Domicilios
+                  <div className="w-0 group-hover:w-4 h-[1px] bg-gold-light transition-all duration-300" />
+                </RouterLink>
+              </li>
             </ul>
           </div>
 
@@ -135,12 +153,12 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Emilios Restaurante. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-beige/40 hover:text-white text-[10px] uppercase tracking-[0.1em] transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-beige/40 hover:text-white text-[10px] uppercase tracking-[0.1em] transition-colors">
-              Terms of Service
-            </a>
+            <RouterLink to="/privacy" className="text-beige/40 hover:text-white text-[10px] uppercase tracking-[0.1em] transition-colors">
+              Política de Privacidad
+            </RouterLink>
+            <RouterLink to="/terms" className="text-beige/40 hover:text-white text-[10px] uppercase tracking-[0.1em] transition-colors">
+              Términos y Condiciones
+            </RouterLink>
           </div>
         </div>
       </div>

@@ -58,7 +58,28 @@ export default function Reservations() {
     return times;
   };
 
-  const availableTimes = getAvailableTimes(selectedDate);
+  const availableTimes = getAvailableTimes(selectedDate).filter(time => {
+    if (!selectedDate) return false;
+    
+    const isToday = selectedDate.toDateString() === new Date().toDateString();
+    if (!isToday) return true;
+
+    // Parse time like "2:30 PM"
+    const [timeStr, ampm] = time.split(' ');
+    let [hours, minutes] = timeStr.split(':').map(Number);
+    
+    if (ampm === 'PM' && hours !== 12) hours += 12;
+    if (ampm === 'AM' && hours === 12) hours = 0;
+
+    const reservationTime = new Date(selectedDate);
+    reservationTime.setHours(hours, minutes, 0, 0);
+
+    // Only allow times at least 30 minutes in the future
+    const minTime = new Date();
+    minTime.setMinutes(minTime.getMinutes() + 30);
+
+    return reservationTime > minTime;
+  });
 
   // Reset time if it's not available in the new date
   useEffect(() => {
@@ -78,9 +99,17 @@ export default function Reservations() {
       return;
     }
     
-    const formattedDate = selectedDate.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    const formattedDate = selectedDate.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
     
-    const message = `*Nueva Reserva - Emilios Restaurante*%0A%0A*Nombre:* ${formData.name}%0A*Teléfono:* ${formData.phone}%0A*Fecha:* ${formattedDate}%0A*Hora:* ${selectedTime}%0A*Personas:* ${formData.guests}%0A*Comentarios:* ${formData.comments || 'Ninguno'}`;
+    const message = `*SOLICITUD DE RESERVA — EMILIOS*%0A%0A` +
+      `Estimados, deseo solicitar una reserva con los siguientes detalles:%0A%0A` +
+      `*• Nombre:* ${formData.name}%0A` +
+      `*• Fecha:* ${formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)}%0A` +
+      `*• Hora:* ${selectedTime}%0A` +
+      `*• Personas:* ${formData.guests}%0A` +
+      `*• Teléfono:* ${formData.phone}%0A` +
+      `*• Comentarios:* ${formData.comments || 'Sin comentarios adicionales.'}%0A%0A` +
+      `_Quedo atento a su confirmación. Muchas gracias._`;
     
     window.open(`https://wa.me/573208990331?text=${message}`, '_blank');
   };

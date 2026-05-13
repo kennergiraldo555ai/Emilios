@@ -78,83 +78,109 @@ export default function FeaturedDishes() {
           </motion.h3>
         </div>
 
-        {/* Gallery */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-          {dishes.slice(0, 3).map((dish, index) => (
-            <motion.div
-              key={dish.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.9, delay: index * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="group relative h-[400px] md:h-[480px] overflow-hidden cursor-pointer premium-card"
-            >
-              <div className="absolute inset-0 bg-gradient-to-t from-darker/90 via-darker/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-700 z-10" />
-              <img 
-                src={dish.image} 
-                alt={t(`featured.items.${dish.key}`)} 
-                className="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-[1.5s] ease-out"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 border border-white/[0.03] group-hover:border-gold/20 transition-colors duration-700 z-20 pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-full p-8 z-30">
-                <div className="flex justify-between items-end mb-3 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                  <div>
-                    <p className="text-gold text-[10px] uppercase tracking-widest mb-1 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                      Featured
-                    </p>
-                    <h4 className="text-white font-serif text-2xl md:text-3xl">
-                      {t(`featured.items.${dish.key}`)}
-                    </h4>
-                  </div>
-                  <p className="text-gold font-serif text-xl">{dish.price}</p>
-                </div>
-                <p className="text-beige/60 text-[10px] md:text-xs mb-4 line-clamp-2 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100">
-                  {dish.reason[lang] || dish.reason.es}
-                </p>
-                <div className="h-[1px] w-0 bg-gold group-hover:w-16 transition-all duration-700 ease-out" />
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        {/* Highly Dynamic Irregular Collage */}
+        <div className="grid grid-cols-12 gap-3 md:gap-4 auto-rows-[160px] md:auto-rows-[220px]">
+          
+          {/* Main Hero Item */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="col-span-12 md:col-span-7 row-span-2 group relative overflow-hidden premium-card rounded-sm"
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-darker via-darker/20 to-transparent opacity-90 z-10" />
+            <img 
+              src={dishes[0].image} 
+              alt={t(`featured.items.${dishes[0].key}`)} 
+              className="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-[2.5s]"
+            />
+            <div className="absolute bottom-0 left-0 w-full p-6 md:p-10 z-30">
+              <span className="text-gold text-[9px] uppercase tracking-[0.4em] mb-2 block font-bold">{t('featured.title')}</span>
+              <h4 className="text-white font-serif text-3xl md:text-5xl lg:text-6xl mb-3 leading-none">{t(`featured.items.${dishes[0].key}`)}</h4>
+              <p className="text-beige/50 text-[10px] md:text-xs max-w-sm line-clamp-2 mb-4 font-light italic">{dishes[0].reason[lang]}</p>
+              <div className="text-gold font-serif text-xl md:text-2xl">{dishes[0].price}</div>
+            </div>
+          </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {dishes.slice(3, 5).map((dish, index) => (
-            <motion.div
-              key={dish.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.9, delay: (index + 2) * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="group relative h-[350px] md:h-[400px] overflow-hidden cursor-pointer premium-card"
-            >
-              <div className="absolute inset-0 bg-gradient-to-t from-darker/90 via-darker/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-700 z-10" />
-              <img 
-                src={dish.image} 
-                alt={t(`featured.items.${dish.key}`)} 
-                className="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-[1.5s] ease-out"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 border border-white/[0.03] group-hover:border-gold/20 transition-colors duration-700 z-20 pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-full p-8 z-30">
-                <div className="flex justify-between items-end mb-3 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                  <div>
-                    <p className="text-gold text-[10px] uppercase tracking-widest mb-1 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                      Featured
-                    </p>
-                    <h4 className="text-white font-serif text-2xl md:text-3xl">
-                      {t(`featured.items.${dish.key}`)}
-                    </h4>
-                  </div>
-                  <p className="text-gold font-serif text-xl">{dish.price}</p>
-                </div>
-                <p className="text-beige/60 text-[10px] md:text-xs mb-4 line-clamp-2 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100">
-                  {dish.reason[lang] || dish.reason.es}
-                </p>
-                <div className="h-[1px] w-0 bg-gold group-hover:w-16 transition-all duration-700 ease-out" />
-              </div>
-            </motion.div>
-          ))}
+          {/* Secondary Tall Item */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="col-span-6 md:col-span-5 row-span-2 md:row-span-3 group relative overflow-hidden premium-card rounded-sm"
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-darker via-darker/20 to-transparent opacity-80 z-10" />
+            <img 
+              src={dishes[1].image} 
+              alt={t(`featured.items.${dishes[1].key}`)} 
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s]"
+            />
+            <div className="absolute bottom-0 left-0 w-full p-4 md:p-8 z-30">
+              <h4 className="text-white font-serif text-xl md:text-3xl mb-2">{t(`featured.items.${dishes[1].key}`)}</h4>
+              <p className="text-gold font-serif text-lg">{dishes[1].price}</p>
+            </div>
+          </motion.div>
+
+          {/* Horizontal Item */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="col-span-6 md:col-span-4 row-span-1 group relative overflow-hidden premium-card rounded-sm"
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-darker via-darker/20 to-transparent opacity-80 z-10" />
+            <img 
+              src={dishes[2].image} 
+              alt={t(`featured.items.${dishes[2].key}`)} 
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.8s]"
+            />
+            <div className="absolute bottom-0 left-0 w-full p-4 z-30">
+              <h4 className="text-white font-serif text-lg md:text-xl">{t(`featured.items.${dishes[2].key}`)}</h4>
+              <p className="text-gold font-serif text-sm">{dishes[2].price}</p>
+            </div>
+          </motion.div>
+
+          {/* Small Square Items */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="col-span-6 md:col-span-3 row-span-1 group relative overflow-hidden premium-card rounded-sm"
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-darker via-darker/20 to-transparent opacity-80 z-10" />
+            <img 
+              src={dishes[3].image} 
+              alt={t(`featured.items.${dishes[3].key}`)} 
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s]"
+            />
+            <div className="absolute bottom-0 left-0 w-full p-4 z-30">
+              <h4 className="text-white font-serif text-sm md:text-base leading-tight">{t(`featured.items.${dishes[3].key}`)}</h4>
+              <p className="text-gold font-serif text-xs">{dishes[3].price}</p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="col-span-6 md:col-span-4 row-span-1 group relative overflow-hidden premium-card rounded-sm"
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-darker via-darker/20 to-transparent opacity-80 z-10" />
+            <img 
+              src={dishes[4].image} 
+              alt={t(`featured.items.${dishes[4].key}`)} 
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s]"
+            />
+            <div className="absolute bottom-0 left-0 w-full p-4 z-30">
+              <h4 className="text-white font-serif text-sm md:text-base leading-tight">{t(`featured.items.${dishes[4].key}`)}</h4>
+              <p className="text-gold font-serif text-xs">{dishes[4].price}</p>
+            </div>
+          </motion.div>
+
         </div>
 
         {/* CTA */}
@@ -163,11 +189,11 @@ export default function FeaturedDishes() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-20 text-center"
+          className="mt-12 text-center"
         >
           <Link
             to="/menu"
-            className="group inline-flex items-center gap-3 bg-transparent border border-gold/40 text-gold hover:bg-gold hover:text-darker hover:border-gold px-12 py-4 uppercase tracking-[0.25em] text-[11px] font-semibold transition-all duration-500"
+            className="group inline-flex items-center gap-3 bg-transparent border border-gold/40 text-gold hover:bg-gold hover:text-darker hover:border-gold px-12 py-4 uppercase tracking-[0.25em] text-[10px] font-semibold transition-all duration-500"
           >
             <span>{t('featured.viewFullMenu')}</span>
             <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />

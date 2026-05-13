@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
+import { Link as RouterLink } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 
 export default function Hero() {
@@ -106,19 +107,22 @@ export default function Hero() {
             smooth={true}
             duration={800}
             offset={-80}
-            className="cursor-pointer bg-gold hover:bg-gold-light text-darker px-12 py-4 uppercase tracking-[0.25em] text-[11px] font-semibold transition-all duration-500 w-full sm:w-auto text-center shadow-[0_0_40px_rgba(197,160,89,0.15)] hover:shadow-[0_0_60px_rgba(197,160,89,0.3)] btn-glow"
+            className="cursor-pointer bg-gold hover:bg-gold-light text-darker px-8 py-4 uppercase tracking-[0.25em] text-[10px] font-semibold transition-all duration-500 w-full sm:w-auto text-center shadow-[0_0_40px_rgba(197,160,89,0.15)] hover:shadow-[0_0_60px_rgba(197,160,89,0.3)] btn-glow"
           >
             {t('hero.reserve')}
           </Link>
-          <Link
-            to="menu"
-            smooth={true}
-            duration={800}
-            offset={-80}
-            className="cursor-pointer bg-transparent border border-gold/40 text-gold hover:bg-gold/[0.08] hover:border-gold/70 px-12 py-4 uppercase tracking-[0.25em] text-[11px] font-semibold transition-all duration-500 w-full sm:w-auto text-center"
+          <RouterLink
+            to="/delivery"
+            className="cursor-pointer bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-white/20 px-8 py-4 uppercase tracking-[0.25em] text-[10px] font-semibold transition-all duration-500 w-full sm:w-auto text-center"
+          >
+            Domicilios
+          </RouterLink>
+          <RouterLink
+            to="/menu"
+            className="cursor-pointer bg-transparent border border-gold/40 text-gold hover:bg-gold hover:text-darker hover:border-gold px-8 py-4 uppercase tracking-[0.25em] text-[10px] font-semibold transition-all duration-500 w-full sm:w-auto text-center"
           >
             {t('hero.viewMenu')}
-          </Link>
+          </RouterLink>
         </motion.div>
       </motion.div>
 

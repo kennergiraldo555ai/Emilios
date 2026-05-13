@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link as ScrollLink } from 'react-scroll';
+import { Link as ScrollLink, animateScroll as scroll, scroller } from 'react-scroll';
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -26,6 +26,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: t('nav.menu'), to: 'menu', route: '/menu' },
+    { name: 'Domicilios', route: '/delivery' },
     { name: t('nav.reservations'), to: 'reservations' },
     { name: t('nav.featured'), to: 'featured' },
     { name: t('nav.about'), to: 'about' },
@@ -34,18 +35,38 @@ export default function Navbar() {
 
   const handleNavClick = (to: string, route?: string) => {
     setIsOpen(false);
+    
     if (route) {
       navigate(route);
-    } else if (!isHomePage) {
-      navigate('/');
-      // Need a small delay to let page render before scrolling
-      setTimeout(() => {
-        const element = document.getElementById(to);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
+      return;
     }
+
+    if (isHomePage) {
+      scroller.scrollTo(to, {
+        duration: 800,
+        delay: 0,
+        smooth: 'easeInOutQuart',
+        offset: -80
+      });
+    } else {
+      navigate('/');
+      setTimeout(() => {
+        scroller.scrollTo(to, {
+          duration: 800,
+          delay: 0,
+          smooth: 'easeInOutQuart',
+          offset: -80
+        });
+      }, 400); // Increased delay to ensure home page is fully loaded
+    }
+  };
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (isHomePage) {
+      e.preventDefault();
+      scroll.scrollToTop({ duration: 800, smooth: true });
+    }
+    setIsOpen(false);
   };
 
   return (
@@ -56,7 +77,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
-        <RouterLink to="/" className="z-50 flex items-center gap-3 group">
+        <RouterLink to="/" onClick={handleLogoClick} className="z-50 flex items-center gap-3 group">
           {/* Logo integration point */}
           <div className="h-16 md:h-20 flex items-center justify-center overflow-hidden transition-all duration-500">
             <img 
@@ -172,27 +193,13 @@ export default function Navbar() {
                     {link.name}
                   </RouterLink>
                 ) : (
-                  isHomePage ? (
-                    <ScrollLink
-                      key={link.name}
-                      to={link.to}
-                      smooth={true}
-                      duration={800}
-                      offset={-80}
-                      onClick={() => setIsOpen(false)}
-                      className="text-3xl font-serif text-white hover:text-gold transition-colors tracking-wide"
-                    >
-                      {link.name}
-                    </ScrollLink>
-                  ) : (
-                    <button
-                      key={link.name}
-                      onClick={() => handleNavClick(link.to)}
-                      className="text-3xl font-serif text-white hover:text-gold transition-colors tracking-wide text-left"
-                    >
-                      {link.name}
-                    </button>
-                  )
+                <button
+                  key={link.name}
+                  onClick={() => handleNavClick(link.to, link.route)}
+                  className="text-3xl font-serif text-white hover:text-gold transition-colors tracking-wide text-left"
+                >
+                  {link.name}
+                </button>
                 )
               ))}
             </motion.div>
