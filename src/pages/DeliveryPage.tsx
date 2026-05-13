@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShoppingBag, MapPin, Phone, User, MessageSquare, Plus, Minus, Trash2, Send, ChevronRight, Target, Search, CheckCircle2, Loader2, Map as MapIcon, X, Edit3, Navigation } from 'lucide-react';
+import { ShoppingBag, MapPin, Phone, User, MessageSquare, Plus, Minus, Trash2, Send, ChevronRight, Target, Search, CheckCircle2, Loader2, X, Edit3, Navigation } from 'lucide-react';
 import { MapContainer, TileLayer, useMapEvents, useMap } from 'react-leaflet';
 import L from 'leaflet';
 
@@ -95,7 +95,6 @@ export default function DeliveryPage() {
   const [coords, setCoords] = useState<[number, number]>([4.8133, -75.6961]);
   const [step, setStep] = useState(1);
   const [mapCenter, setMapCenter] = useState<[number, number]>([4.8133, -75.6961]);
-  const [showMap, setShowMap] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [suggestions, setSuggestions] = useState<any[]>([]);
   const [isMapLoading, setIsMapLoading] = useState(false);
@@ -164,7 +163,6 @@ export default function DeliveryPage() {
     setMapCenter(newCoords);
     setCoords(newCoords);
     setSuggestions([]);
-    setShowMap(true);
   };
 
   const handleMapMoveEnd = useCallback(async (center: L.LatLng) => {
@@ -182,7 +180,6 @@ export default function DeliveryPage() {
         const newCoords: [number, number] = [latitude, longitude];
         setMapCenter(newCoords);
         setCoords(newCoords);
-        setShowMap(true);
         const address = await reverseGeocode(latitude, longitude);
         setFormData(prev => ({ ...prev, address: address, confirmedAddress: address }));
       });
