@@ -2,9 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FULL_MENU_DATA as menuData } from '../config/menu';
 
-const categories = Object.keys(menuData);91509098-f4fdc6d0ff04.webp" }
-  ]
-};
+const categories = Object.keys(menuData);
 
 export default function FullMenuPage() {
   const [activeCategory, setActiveCategory] = useState("signature");
