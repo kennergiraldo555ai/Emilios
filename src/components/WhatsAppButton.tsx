@@ -2,8 +2,10 @@ import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
-export const WHATSAPP_NUMBER = "+573208990331";
-export const WHATSAPP_MESSAGE = "¡Hola Emilios! 🥂 Me encantaría vivir la experiencia. ✨ Me gustaría solicitar información sobre reservas/el menú. 🍽️ Muchas gracias.";
+import { RESTAURANT_INFO } from '../config/restaurant';
+
+export const WHATSAPP_NUMBER = RESTAURANT_INFO.contact.whatsapp;
+export const WHATSAPP_MESSAGE = RESTAURANT_INFO.contact.whatsappMessage;
 
 export default function WhatsAppButton() {
   const [isScrolled, setIsScrolled] = useState(false);

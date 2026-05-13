@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Link as ScrollLink } from 'react-scroll';
 import { FaInstagram, FaFacebook } from 'react-icons/fa';
 import { Link as RouterLink } from 'react-router-dom';
+import { RESTAURANT_INFO } from '../config/restaurant';
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -20,8 +21,8 @@ export default function Footer() {
               {/* Logo integration point */}
               <div className="h-16 md:h-20 flex items-center justify-start overflow-hidden transition-all duration-500">
                 <img 
-                  src="/logo.png" 
-                  alt="Emilios Logo" 
+                  src={RESTAURANT_INFO.assets.logo} 
+                  alt={`${RESTAURANT_INFO.name} Logo`} 
                   className="h-full w-auto object-contain"
                   onLoad={(e) => {
                     const target = e.target as HTMLImageElement;
@@ -46,8 +47,8 @@ export default function Footer() {
                 </div>
               </div>
               <div className="flex flex-col fallback-text">
-                <span className="text-3xl font-serif text-gold tracking-widest leading-none group-hover:text-gold-light transition-colors duration-500">
-                  EMILIOS
+                <span className="text-3xl font-serif text-gold tracking-widest leading-none group-hover:text-gold-light transition-colors duration-500 uppercase">
+                  {RESTAURANT_INFO.name}
                 </span>
                 <span className="text-[9px] uppercase tracking-[0.3em] text-beige/50 mt-1">
                   Restaurante
@@ -59,7 +60,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-6">
               <a 
-                href="https://www.instagram.com/emiliosrestaurante/" 
+                href={RESTAURANT_INFO.contact.instagramUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="group flex items-center justify-center w-10 h-10 border border-white/10 hover:border-gold/50 transition-all duration-500 rounded-full hover:bg-gold/5"
@@ -82,8 +83,8 @@ export default function Footer() {
             <h4 className="text-white font-serif text-xl mb-6">Contacto</h4>
             <ul className="space-y-4 text-beige/60 font-light text-sm">
               <li>
-                <a href="tel:+573208990331" className="hover:text-gold transition-colors duration-300">
-                  +57 320 899 0331
+                <a href={`tel:${RESTAURANT_INFO.contact.whatsapp.replace(/\s/g, '')}`} className="hover:text-gold transition-colors duration-300">
+                  {RESTAURANT_INFO.contact.whatsapp}
                 </a>
               </li>
               <li>
@@ -92,8 +93,7 @@ export default function Footer() {
                 </a>
               </li>
               <li className="leading-relaxed">
-                Cra 16 No. 8-60 Los Alpes<br />
-                Pereira, Risaralda 660003
+                {RESTAURANT_INFO.location.address}
               </li>
             </ul>
           </div>
@@ -150,7 +150,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="pt-8 border-t border-white/[0.05] flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-beige/40 text-[10px] uppercase tracking-[0.2em]">
-            &copy; {new Date().getFullYear()} Emilios Restaurante. All rights reserved.
+            &copy; {new Date().getFullYear()} {RESTAURANT_INFO.fullName}. All rights reserved.
           </p>
           <div className="flex gap-6">
             <RouterLink to="/privacy" className="text-beige/40 hover:text-white text-[10px] uppercase tracking-[0.1em] transition-colors">

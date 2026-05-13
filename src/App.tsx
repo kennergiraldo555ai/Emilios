@@ -4,6 +4,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import { CalendarDays, MessageCircle } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { RESTAURANT_INFO } from './config/restaurant';
 import './App.css';
 import Preloader from './components/Preloader';
 import Navbar from './components/Navbar';
@@ -40,6 +41,8 @@ function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
+    // Dynamic document title
+    document.title = `${RESTAURANT_INFO.name} — ${RESTAURANT_INFO.tagline}`;
   }, [pathname]);
   return null;
 }

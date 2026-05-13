@@ -3,53 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, MapPin, Phone, User, MessageSquare, Plus, Minus, Trash2, Send, ChevronRight, Target, Search, CheckCircle2, Loader2, X, Edit3, Navigation } from 'lucide-react';
 import { MapContainer, TileLayer, useMapEvents, useMap } from 'react-leaflet';
 import L from 'leaflet';
+import { RESTAURANT_INFO } from '../config/restaurant';
+import { MENU_DATA, MENU_CATEGORIES } from '../config/menu';
 
 // Leaflet styles
 import 'leaflet/dist/leaflet.css';
 
-const MENU_DATA = {
-  signature: [
-    { id: 'sig-1', name: "Tomahawk Emilios", price: 280000, category: 'Signature', image: "/images/tomahawk_steak.webp" },
-    { id: 'sig-2', name: "Mero al Horno", price: 145000, category: 'Signature', image: "/images/mero_horno.webp" },
-    { id: 'sig-3', name: "Pasta Trufada", price: 110000, category: 'Signature', image: "/images/1551183053-bf91a1d81141.webp" }
-  ],
-  breakfast: [
-    { id: 'brk-1', name: "Desayuno Emilios", price: 45000, category: 'Desayunos', image: "/images/1533089860892-a7c6f0a88666.webp" },
-    { id: 'brk-2', name: "Tostadas Francesas", price: 35000, category: 'Desayunos', image: "/images/tostadas_francesas.webp" },
-    { id: 'brk-3', name: "Parfait de Temporada", price: 28000, category: 'Desayunos', image: "/images/1494597564530-871f2b93ac55.webp" }
-  ],
-  meats: [
-    { id: 'mt-1', name: "Ribeye", price: 180000, category: 'Carnes', image: "/images/1600891964092-4316c288032e.webp" },
-    { id: 'mt-2', name: "Entraña", price: 120000, category: 'Carnes', image: "/images/1529692236671-f1f6cf9683ba.webp" },
-    { id: 'mt-3', name: "Lomo de Res", price: 95000, category: 'Carnes', image: "/images/1558030006-450675393462.webp" }
-  ],
-  seafood: [
-    { id: 'sea-1', name: "Salmón al Grill", price: 85000, category: 'Mar de Autor', image: "/images/1485921325833-c519f76c4927.webp" },
-    { id: 'sea-2', name: "Langostinos Jumbo", price: 115000, category: 'Mar de Autor', image: "/images/1565557623262-b51c2513a641.webp" }
-  ],
-  pasta: [
-    { id: 'pst-1', name: "Linguini Frutti di Mare", price: 85000, category: 'Pastas', image: "/images/1563379926898-05f4575a45d8.webp" },
-    { id: 'pst-2', name: "Risotto de Setas", price: 80000, category: 'Pastas', image: "/images/risotto_setas.webp" }
-  ],
-  desserts: [
-    { id: 'des-1', name: "Esfera de Chocolate", price: 45000, category: 'Postres', image: "/images/esfera_chocolate.webp" },
-    { id: 'des-2', name: "Tiramisú Emilios", price: 35000, category: 'Postres', image: "/images/esfera_chocolate.webp" }
-  ],
-  beverages: [
-    { id: 'bev-1', name: "Limonada de Coco", price: 18000, category: 'Bebidas', image: "/images/1513558161293-cdaf765ed2fd.webp" },
-    { id: 'bev-2', name: "Café Espresso", price: 8000, category: 'Bebidas', image: "/images/1510591509098-f4fdc6d0ff04.webp" }
-  ]
-};
 
-const CATEGORIES = [
-  { id: 'signature', name: 'Signature' },
-  { id: 'breakfast', name: 'Desayunos' },
-  { id: 'meats', name: 'Carnes' },
-  { id: 'seafood', name: 'Mar' },
-  { id: 'pasta', name: 'Pastas' },
-  { id: 'desserts', name: 'Postres' },
-  { id: 'beverages', name: 'Bebidas' }
-];
 
 function MapEventsHandler({ onMoveEnd }: { onMoveEnd: (center: L.LatLng) => void }) {
   const map = useMapEvents({
@@ -199,8 +159,8 @@ export default function DeliveryPage() {
 
     const mapLink = `https://www.google.com/maps?q=${coords[0]},${coords[1]}`;
 
-    const messageText = `✨ NUEVA ORDEN DE DOMICILIO - EMILIOS ✨\n\n` +
-      `Estimados Emilios, deseo realizar el siguiente pedido:\n\n` +
+    const messageText = `✨ NUEVA ORDEN DE DOMICILIO - ${RESTAURANT_INFO.name.toUpperCase()} ✨\n\n` +
+      `Estimados ${RESTAURANT_INFO.name}, deseo realizar el siguiente pedido:\n\n` +
       `🛒 DETALLE DEL PEDIDO:\n${cartItemsText}\n\n` +
       `💰 RESUMEN:\n` +
       `• TOTAL ESTIMADO: ${formatCurrency(subtotal)}\n\n` +
@@ -213,7 +173,7 @@ export default function DeliveryPage() {
       `📝 NOTAS:\n${formData.comments || 'Sin notas.'}`;
     
     // Proper URL encoding for the entire message
-    const whatsappUrl = `https://wa.me/573208990331?text=${encodeURIComponent(messageText)}`;
+    const whatsappUrl = `https://wa.me/${RESTAURANT_INFO.contact.whatsapp.replace('+', '')}?text=${encodeURIComponent(messageText)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -238,7 +198,7 @@ export default function DeliveryPage() {
           <div className="lg:col-span-8 space-y-10">
             {/* Category Tabs */}
             <div className="flex gap-4 overflow-x-auto no-scrollbar pb-2 border-b border-white/5">
-              {CATEGORIES.map((cat) => (
+              {MENU_CATEGORIES.map((cat) => (
                 <button key={cat.id} onClick={() => setActiveCategory(cat.id)} className={`text-[10px] uppercase tracking-[0.2em] whitespace-nowrap px-4 py-2 transition-all ${activeCategory === cat.id ? 'text-gold border-b-2 border-gold font-bold' : 'text-beige/40 hover:text-beige/70'}`}>
                   {cat.name}
                 </button>

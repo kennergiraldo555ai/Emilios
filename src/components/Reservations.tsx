@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Send, ChevronRight, ChevronLeft } from 'lucide-react';
+import { RESTAURANT_INFO } from '../config/restaurant';
 
 export default function Reservations() {
   const [formData, setFormData] = useState({
@@ -101,8 +102,8 @@ export default function Reservations() {
     
     const formattedDate = selectedDate.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
     
-    const message = `*SOLICITUD DE RESERVA — EMILIOS*%0A%0A` +
-      `Estimados, deseo solicitar una reserva con los siguientes detalles:%0A%0A` +
+    const message = `*SOLICITUD DE RESERVA — ${RESTAURANT_INFO.name.toUpperCase()}*%0A%0A` +
+      `Estimados ${RESTAURANT_INFO.name}, deseo solicitar una reserva con los siguientes detalles:%0A%0A` +
       `*• Nombre:* ${formData.name}%0A` +
       `*• Fecha:* ${formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)}%0A` +
       `*• Hora:* ${selectedTime}%0A` +
@@ -111,7 +112,7 @@ export default function Reservations() {
       `*• Comentarios:* ${formData.comments || 'Sin comentarios adicionales.'}%0A%0A` +
       `_Quedo atento a su confirmación. Muchas gracias._`;
     
-    window.open(`https://wa.me/573208990331?text=${message}`, '_blank');
+    window.open(`https://wa.me/${RESTAURANT_INFO.contact.whatsapp.replace('+', '')}?text=${message}`, '_blank');
   };
 
   const scroll = (direction: 'left' | 'right') => {

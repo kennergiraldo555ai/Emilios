@@ -2,48 +2,12 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const dishes = [
-  {
-    id: 1,
-    image: "/images/tomahawk_steak.webp",
-    key: "meat",
-    price: "$280.000",
-    reason: { es: "Nuestra pieza más majestuosa, madurada a la perfección.", en: "Our most majestic cut, aged to perfection." }
-  },
-  {
-    id: 2,
-    image: "/images/mero_horno.webp",
-    key: "seafood",
-    price: "$145.000",
-    reason: { es: "Fresco, delicado y con una costra de hierbas secreta.", en: "Fresh, delicate, and featuring a secret herb crust." }
-  },
-  {
-    id: 3,
-    image: "/images/1504674900247-0877df9cc836.webp",
-    key: "signature",
-    price: "$110.000",
-    reason: { es: "La esencia de nuestra cocina en un solo plato.", en: "The essence of our kitchen in a single dish." }
-  },
-  {
-    id: 4,
-    image: "/images/esfera_chocolate.webp",
-    key: "dessert",
-    price: "$45.000",
-    reason: { es: "Una explosión de texturas y chocolate de origen.", en: "An explosion of textures and origin chocolate." }
-  },
-  {
-    id: 5,
-    image: "/images/1514362545857-3bc16c4c7d1b.webp",
-    key: "cocktails",
-    price: "$45.000",
-    reason: { es: "Alquimia pura servida con un toque de humo.", en: "Pure alchemy served with a touch of smoke." }
-  }
-];
+import { FEATURED_DISHES } from '../config/menu';
 
 export default function FeaturedDishes() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language as 'es' | 'en';
+  const dishes = FEATURED_DISHES;
 
   return (
     <section id="featured" className="py-32 bg-dark relative overflow-hidden">

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Shield } from 'lucide-react';
+import { RESTAURANT_INFO } from '../config/restaurant';
 
 export default function PrivacyPage() {
   return (
@@ -15,7 +16,7 @@ export default function PrivacyPage() {
             <Shield size={32} />
           </div>
           <h1 className="text-5xl md:text-6xl font-serif text-white mb-6">Política de Privacidad</h1>
-          <p className="text-gold uppercase tracking-[0.3em] text-[11px] font-semibold">Emilios Restaurante</p>
+          <p className="text-gold uppercase tracking-[0.3em] text-[11px] font-semibold">{RESTAURANT_INFO.name}</p>
         </motion.div>
 
         <motion.div 
@@ -27,7 +28,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-2xl font-serif text-white mb-4 italic">1. Introducción</h2>
             <p>
-              En Emilios Restaurante, valoramos su privacidad y estamos comprometidos a proteger sus datos personales. Esta política explica cómo recopilamos, usamos y protegemos la información que nos proporciona a través de nuestro sitio web.
+              En {RESTAURANT_INFO.name}, valoramos su privacidad y estamos comprometidos a proteger sus datos personales. Esta política explica cómo recopilamos, usamos y protegemos la información que nos proporciona a través de nuestro sitio web.
             </p>
           </section>
 

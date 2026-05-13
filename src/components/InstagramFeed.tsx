@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { FaInstagram } from 'react-icons/fa';
+import { RESTAURANT_INFO } from '../config/restaurant';
 
 const feed = [
   "/images/tomahawk_steak.webp",
@@ -23,7 +24,7 @@ export default function InstagramFeed() {
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16 px-6">
           <motion.a 
-            href="https://www.instagram.com/emiliosrestaurante/" 
+            href={RESTAURANT_INFO.contact.instagramUrl} 
             target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center space-x-3 mb-6 text-gold hover:text-gold-light transition-colors group"
@@ -45,7 +46,7 @@ export default function InstagramFeed() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <a 
-              href="https://www.instagram.com/emiliosrestaurante/" 
+              href={RESTAURANT_INFO.contact.instagramUrl} 
               target="_blank" 
               rel="noopener noreferrer"
               className="hover:text-gold transition-colors duration-500"
@@ -65,7 +66,7 @@ export default function InstagramFeed() {
             {[...feed, ...feed].map((img, index) => (
               <a 
                 key={index}
-                href="https://www.instagram.com/emiliosrestaurante/" 
+                href={RESTAURANT_INFO.contact.instagramUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="group relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 flex-shrink-0 cursor-pointer overflow-hidden block mx-[2px]"
@@ -75,7 +76,7 @@ export default function InstagramFeed() {
                 </div>
                 <img 
                   src={img} 
-                  alt="Instagram @emiliosrestaurante" 
+                  alt={`Instagram ${RESTAURANT_INFO.contact.instagram}`} 
                   className="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-[1.5s] ease-out"
                   loading="lazy"
                 />

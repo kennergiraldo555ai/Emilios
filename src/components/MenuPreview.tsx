@@ -3,50 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const categories = ["meat", "seafood", "signature", "dessert", "cocktails"];
-
-const menuData: Record<string, string[]> = {
-  meat: ["item1", "item2", "item3"],
-  seafood: ["item1", "item2", "item3"],
-  signature: ["item1", "item2"],
-  dessert: ["item1", "item2"],
-  cocktails: ["item1", "item2", "item3"]
-};
-
-const prices: Record<string, Record<string, string>> = {
-  meat: { item1: "$180.000", item2: "$120.000", item3: "$95.000" },
-  seafood: { item1: "$145.000", item2: "$85.000", item3: "$65.000" },
-  signature: { item1: "$135.000", item2: "$110.000" },
-  dessert: { item1: "$45.000", item2: "$35.000" },
-  cocktails: { item1: "$38.000", item2: "$42.000", item3: "$36.000" }
-};
-
-const itemImages: Record<string, Record<string, string>> = {
-  meat: { 
-    item1: "/images/1600891964092-4316c288032e.webp",
-    item2: "/images/1529692236671-f1f6cf9683ba.webp",
-    item3: "/images/1558030006-450675393462.webp"
-  },
-  seafood: { 
-    item1: "/images/mero_horno.webp",
-    item2: "/images/1485921325833-c519f76c4927.webp",
-    item3: "/images/1565557623262-b51c2513a641.webp"
-  },
-  signature: { 
-    item1: "/images/tomahawk_steak.webp",
-    item2: "/images/1551183053-bf91a1d81141.webp"
-  },
-  dessert: { 
-    item1: "/images/esfera_chocolate.webp",
-    item2: "/images/esfera_chocolate.webp"
-  },
-  cocktails: { 
-    item1: "/images/1514362545857-3bc16c4c7d1b.webp",
-    item2: "/images/1514362545857-3bc16c4c7d1b.webp",
-    item3: "/images/1587223075055-82e9a937ddff.webp"
-  }
-};
+import { 
+  PREVIEW_CATEGORIES as categories, 
+  PREVIEW_MENU_DATA as menuData, 
+  PREVIEW_PRICES as prices, 
+  PREVIEW_ITEM_IMAGES as itemImages 
+} from '../config/menu';
 
 export default function MenuPreview() {
   const { t } = useTranslation();

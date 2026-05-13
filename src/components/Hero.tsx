@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { Link as RouterLink } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
+import { RESTAURANT_INFO } from '../config/restaurant';
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -82,7 +83,7 @@ export default function Hero() {
           className="text-7xl md:text-8xl lg:text-[10rem] font-serif text-white mb-3 leading-[0.85] tracking-tight drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
           style={{ translateZ: '80px' }}
         >
-          Emilios
+          {RESTAURANT_INFO.name}
         </motion.h1>
 
         <motion.p

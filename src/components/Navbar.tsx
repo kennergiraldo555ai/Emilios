@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link as ScrollLink, animateScroll as scroll, scroller } from 'react-scroll';
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { RESTAURANT_INFO } from '../config/restaurant';
 import { WHATSAPP_NUMBER, WHATSAPP_MESSAGE } from './WhatsAppButton';
-import { MessageCircle } from 'lucide-react';
 
 export default function Navbar() {
   const { t } = useTranslation();
@@ -81,8 +81,8 @@ export default function Navbar() {
           {/* Logo integration point */}
           <div className="h-16 md:h-20 flex items-center justify-center overflow-hidden transition-all duration-500">
             <img 
-              src="/logo.png" 
-              alt="Emilios Logo" 
+              src={RESTAURANT_INFO.assets.logo} 
+              alt={`${RESTAURANT_INFO.name} Logo`} 
               className="h-full w-auto object-contain scale-[1.15]"
               onLoad={(e) => {
                 const target = e.target as HTMLImageElement;
@@ -107,8 +107,8 @@ export default function Navbar() {
             </div>
           </div>
           <div className="flex flex-col">
-            <span className="text-2xl font-serif text-gold tracking-widest leading-none group-hover:text-gold-light transition-colors duration-500">
-              EMILIOS
+            <span className="text-2xl font-serif text-gold tracking-widest leading-none group-hover:text-gold-light transition-colors duration-500 uppercase">
+              {RESTAURANT_INFO.name}
             </span>
             <span className="text-[8px] uppercase tracking-[0.3em] text-beige/50 mt-1">
               Restaurante

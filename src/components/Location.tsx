@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Clock } from 'lucide-react';
+import { RESTAURANT_INFO } from '../config/restaurant';
 
 export default function Location() {
   const { t } = useTranslation();
@@ -58,8 +59,7 @@ export default function Location() {
                 <div>
                   <h4 className="text-white font-serif text-2xl mb-3">Dirección</h4>
                   <p className="text-beige/60 font-light leading-relaxed text-base">
-                    Cra 16 No. 8-60 Los Alpes<br />
-                    Pereira, Risaralda 660003
+                    {RESTAURANT_INFO.location.address}
                   </p>
                 </div>
               </div>
@@ -71,7 +71,7 @@ export default function Location() {
                 <div>
                   <h4 className="text-white font-serif text-2xl mb-3">Teléfono</h4>
                   <p className="text-beige/60 font-light text-base">
-                    <a href="tel:+573208990331" className="hover:text-gold transition-colors">+57 320 899 0331</a>
+                    <a href={`tel:${RESTAURANT_INFO.contact.whatsapp.replace(/\s/g, '')}`} className="hover:text-gold transition-colors">{RESTAURANT_INFO.contact.whatsapp}</a>
                   </p>
                 </div>
               </div>

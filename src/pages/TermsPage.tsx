@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { FileText } from 'lucide-react';
+import { RESTAURANT_INFO } from '../config/restaurant';
 
 export default function TermsPage() {
   return (
@@ -15,7 +16,7 @@ export default function TermsPage() {
             <FileText size={32} />
           </div>
           <h1 className="text-5xl md:text-6xl font-serif text-white mb-6">Términos y Condiciones</h1>
-          <p className="text-gold uppercase tracking-[0.3em] text-[11px] font-semibold">Emilios Restaurante</p>
+          <p className="text-gold uppercase tracking-[0.3em] text-[11px] font-semibold">{RESTAURANT_INFO.name}</p>
         </motion.div>
 
         <motion.div 
@@ -34,7 +35,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-serif text-white mb-4 italic">2. Reservas</h2>
             <p>
-              Las reservas realizadas a través de nuestra plataforma están sujetas a disponibilidad. Emilios Restaurante se reserva el derecho de cancelar o modificar una reserva en caso de fuerza mayor, comunicándolo oportunamente al cliente.
+              Las reservas realizadas a través de nuestra plataforma están sujetas a disponibilidad. {RESTAURANT_INFO.name} se reserva el derecho de cancelar o modificar una reserva en caso de fuerza mayor, comunicándolo oportunamente al cliente.
             </p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Se recomienda llegar 10 minutos antes de la hora reservada.</li>
@@ -56,7 +57,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-serif text-white mb-4 italic">4. Propiedad Intelectual</h2>
             <p>
-              Todo el contenido de este sitio (logos, imágenes, textos, menús) es propiedad exclusiva de Emilios Restaurante y está protegido por las leyes de derechos de autor. Queda prohibida su reproducción sin consentimiento previo.
+              Todo el contenido de este sitio (logos, imágenes, textos, menús) es propiedad exclusiva de {RESTAURANT_INFO.name} y está protegido por las leyes de derechos de autor. Queda prohibida su reproducción sin consentimiento previo.
             </p>
           </section>
 

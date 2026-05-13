@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { RESTAURANT_INFO } from '../config/restaurant';
 
 export default function About() {
   const { t } = useTranslation();
@@ -87,7 +88,7 @@ export default function About() {
             {/* Chef Signature */}
             <div className="mt-16 pt-10 border-t border-white/[0.05] relative">
               <div className="absolute top-0 left-0 w-20 h-[1px] bg-gradient-to-r from-gold/50 to-transparent" />
-              <p className="text-gold/80 font-serif text-4xl italic mb-4 gold-shimmer">Emilios</p>
+              <p className="text-gold/80 font-serif text-4xl italic mb-4 gold-shimmer">{RESTAURANT_INFO.name}</p>
               <p className="text-beige/40 uppercase tracking-[0.3em] text-[10px] font-semibold">{t('about.chef')}</p>
             </div>
           </motion.div>
